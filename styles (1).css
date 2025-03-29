@@ -1,0 +1,141 @@
+    /* --- Additions/Modifications for UI Improvements & Animations --- */
+
+    :root {
+        /* Slightly softer shadows */
+        --shadow-light: rgba(0, 0, 0, 0.04);
+        --shadow-medium: rgba(0, 0, 0, 0.07);
+        --shadow-dark: rgba(0, 0, 0, 0.12);
+        /* Standard border-radius */
+        --border-radius: 8px;
+    }
+
+    /* Apply base border-radius */
+    .btn, .skill-card, .publication-card, .contact-form, .timeline-content, .map-container, .form-group input, .form-group textarea, .language-switcher {
+        border-radius: var(--border-radius);
+    }
+     /* Override for specific round elements */
+    .hero-image img, .contact-item i, .social-links a, #dark-mode-toggle, .timeline-item::after {
+        border-radius: 50%;
+    }
+     .language-switcher button {
+         border-radius: 10px; /* Keep smaller radius */
+     }
+
+    /* Smoother transitions on more elements */
+    body, header, section, .skill-card, .publication-card, .contact-form, .contact-item i, .social-links a, footer, .timeline-content, .map-container, .about-image img, .hero-image img, .section-title h2, .about-text, .hero-text, .timeline-item {
+        transition: background-color 0.4s ease, color 0.4s ease, border-color 0.4s ease, box-shadow 0.4s ease, opacity 0.6s ease-out, transform 0.6s ease-out;
+    }
+
+
+    /* Header shadow on scroll */
+    header.scrolled {
+        box-shadow: 0 2px 10px var(--shadow-medium);
+        background-color: rgba(255, 255, 255, 0.95); /* Slightly transparent */
+        backdrop-filter: blur(5px);
+        -webkit-backdrop-filter: blur(5px);
+    }
+    body.dark-mode header.scrolled {
+         background-color: rgba(27, 38, 59, 0.95); /* Dark transparent */
+         box-shadow: 0 2px 10px var(--shadow-dark);
+     }
+
+    /* Button hover refinement */
+    .btn:hover, .btn:focus {
+        transform: translateY(-4px) scale(1.02); /* Slightly more lift */
+        box-shadow: 0 8px 15px var(--shadow-medium);
+    }
+    body.dark-mode .btn:hover, body.dark-mode .btn:focus {
+        box-shadow: 0 8px 15px var(--shadow-dark);
+    }
+
+
+    /* Card hover refinement */
+     .skill-card:hover, .publication-card:hover, .timeline-item:hover .timeline-content {
+         transform: translateY(-10px); /* Consistent lift */
+         box-shadow: 0 15px 30px var(--shadow-medium);
+     }
+      body.dark-mode .skill-card:hover, body.dark-mode .publication-card:hover, body.dark-mode .timeline-item:hover .timeline-content {
+          box-shadow: 0 15px 30px var(--shadow-dark);
+      }
+
+
+    /* General Section Padding */
+    section {
+        padding: 6.5rem 0; /* Slightly more vertical space */
+    }
+     @media (max-width: 767.98px) {
+        section {
+             padding: 4.5rem 0;
+         }
+         .hero { padding-top: 8rem; padding-bottom: 4.5rem; }
+     }
+
+
+    /* --- Scroll Animation Classes --- */
+    .fade-in-element {
+        opacity: 0;
+        transform: translateY(30px); /* Start slightly lower */
+        transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+    }
+
+    .fade-in-element.is-visible {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+     /* Add staggered delay for card elements */
+    .skills-container .skill-card,
+    .publications-container .publication-card,
+    .timeline .timeline-item {
+        /* Default state for observer */
+        opacity: 0;
+        transform: translateY(30px);
+        transition: opacity 0.6s ease-out 0.2s, transform 0.6s ease-out 0.2s; /* Add base delay */
+    }
+
+     .skills-container.is-visible .skill-card,
+     .publications-container.is-visible .publication-card,
+     .timeline.is-visible .timeline-item {
+        opacity: 1;
+        transform: translateY(0);
+     }
+
+    /* Add specific delays for staggering within containers */
+    .skills-container.is-visible .skill-card:nth-child(2) { transition-delay: 0.3s; }
+    .skills-container.is-visible .skill-card:nth-child(3) { transition-delay: 0.4s; }
+    .skills-container.is-visible .skill-card:nth-child(4) { transition-delay: 0.2s; } /* Reset for next row */
+    .skills-container.is-visible .skill-card:nth-child(5) { transition-delay: 0.3s; }
+    .skills-container.is-visible .skill-card:nth-child(6) { transition-delay: 0.4s; }
+    .skills-container.is-visible .skill-card:nth-child(7) { transition-delay: 0.5s; }
+
+
+    .publications-container.is-visible .publication-card:nth-child(2) { transition-delay: 0.3s; }
+    .publications-container.is-visible .publication-card:nth-child(3) { transition-delay: 0.4s; }
+
+    .timeline.is-visible .timeline-item:nth-child(odd) { transition-delay: 0.2s; }
+    .timeline.is-visible .timeline-item:nth-child(even) { transition-delay: 0.35s; }
+
+
+    /* Apply initial fade-in state to elements we want to animate */
+    /* We will target containers/sections primarily */
+    #about .about-image, #about .about-text,
+    #experience .timeline,
+    #skills .skills-container,
+    #publications .publications-container,
+    #contact .contact-info, #contact .contact-form,
+    .map-section .map-container {
+        /* Start hidden - JS will remove this class or add .is-visible */
+        /* Let JS handle adding .is-visible for more control */
+    }
+
+     .section-title { /* Animate section titles too */
+         opacity: 0;
+         transform: translateY(20px);
+         transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+     }
+      .section-title.is-visible {
+          opacity: 1;
+          transform: translateY(0);
+      }
+
+    /* --- End UI Improvements & Animations --- */
