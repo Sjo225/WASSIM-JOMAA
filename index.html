@@ -1,845 +1,209 @@
 <!DOCTYPE html>
-
 <html lang="en" dir="ltr">
-
 <head>
-
 <meta charset="utf-8">
-
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
 <!-- Description will be updated by JS -->
-
 <meta name="description" id="meta-description" content="Loading profile...">
-
 <!-- Title will be updated by JS -->
-
 <title id="page-title">Dr. Wassim Jomaa - Loading...</title>
 
-
-
 <!-- Favicon (replace with your actual favicon) -->
-
 <link rel="icon" href="favicon.ico" type="image/x-icon">
 
-
-
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-
-
-
-<style>
-
-/* --- STYLES (Keep the previous CSS styles as they were) --- */
-
-:root {
-
---primary-color: #2c3e50;
-
---secondary-color: #3498db;
-
---accent-color: #e74c3c;
-
---light-color: #ecf0f1;
-
---dark-color: #2c3e50;
-
---text-color: #333;
-
---text-light: #7f8c8d;
-
---background-light: #f9f9f9;
-
---white: #ffffff;
-
---shadow-light: rgba(0, 0, 0, 0.05);
-
---shadow-medium: rgba(0, 0, 0, 0.08); /* Softened shadow */
-
---shadow-dark: rgba(0, 0, 0, 0.15);
-
-font-size: 16px;
-
-}
-
-
-
-* { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Poppins', sans-serif; }
-
-html { scroll-behavior: smooth; }
-
-body { line-height: 1.6; color: var(--text-color); background-color: var(--background-light); overflow-x: hidden; }
-
-.container { max-width: 1200px; margin: 0 auto; padding: 0 1rem; }
-
-img { max-width: 100%; height: auto; display: block; }
-
-.sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; border: 0; }
-
-
-
-/* Improved Focus States */
-
-:focus-visible { outline: 3px solid var(--secondary-color); outline-offset: 2px; border-radius: 4px; box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.3); }
-
-:focus:not(:focus-visible) { outline: none; }
-
-a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visible { outline: 3px solid var(--secondary-color); outline-offset: 2px; border-radius: 4px; box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.3); }
-
-a:focus:not(:focus-visible), button:focus:not(:focus-visible), input:focus:not(:focus-visible), textarea:focus:not(:focus-visible) { outline: none; }
-
-.form-group input:focus, .form-group textarea:focus { border-color: var(--secondary-color); box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.3); outline: none; }
-
-
-
-/* Header */
-
-header { background-color: var(--white); box-shadow: 0 1px 4px var(--shadow-medium); position: fixed; width: 100%; top: 0; left: 0; z-index: 1000; transition: box-shadow 0.3s ease; }
-
-.navbar { display: flex; justify-content: space-between; align-items: center; padding: 1rem 0; transition: padding 0.3s ease; }
-
-.logo { font-size: 1.5rem; font-weight: 700; color: var(--primary-color); text-decoration: none; }
-
-.logo span { color: var(--secondary-color); }
-
-.nav-links { display: flex; list-style: none; align-items: center; }
-
-.nav-links li { margin-left: 1.875rem; }
-
-.nav-links a { text-decoration: none; color: var(--text-color); font-weight: 500; transition: color 0.3s ease; padding: 0.5rem 0; position: relative; }
-
-.nav-links a::after { content: ''; position: absolute; width: 0; height: 2px; bottom: 0; left: 0; background-color: var(--secondary-color); transition: width 0.3s ease; }
-
-.nav-links a:hover::after, .nav-links a:focus::after { width: 100%; }
-
-.nav-links a:hover, .nav-links a:focus { color: var(--secondary-color); }
-
-
-
-/* Language Switcher */
-
-.language-switcher { margin-left: 1.25rem; display: flex; align-items: center; gap: 0.3rem; border: 1px solid var(--light-color); padding: 0.2rem 0.5rem; border-radius: 15px; }
-
-.language-switcher button { color: var(--text-light); background: none; border: none; text-decoration: none; font-size: 0.875rem; cursor: pointer; padding: 0.2rem 0.4rem; border-radius: 10px; transition: color 0.3s ease, background-color 0.3s ease; font-family: 'Poppins', sans-serif; }
-
-.language-switcher button:hover, .language-switcher button:focus { color: var(--secondary-color); }
-
-.language-switcher button.active { color: var(--white); background-color: var(--secondary-color); font-weight: 600; cursor: default; }
-
-.language-separator { color: var(--text-light); font-size: 0.875rem; line-height: 1; }
-
-
-
-/* Mobile Menu */
-
-.menu-toggle { display: none; background: none; border: none; font-size: 1.5rem; color: var(--primary-color); cursor: pointer; padding: 0.5rem; z-index: 1002; }
-
-
-
-/* Hero Section */
-
-.hero { padding: 10rem 0 6.25rem; background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%); display: flex; align-items: center; min-height: calc(100vh - 50px); }
-
-.hero-content { display: flex; align-items: center; justify-content: space-between; gap: 3rem; }
-
-.hero-text { flex: 1; animation: fadeInSlideUp 0.8s ease-out forwards; }
-
-.hero-text h1 { font-size: clamp(2.5rem, 5vw, 3.2rem); margin-bottom: 1.25rem; color: var(--primary-color); line-height: 1.2; }
-
-.hero-text h1 span { color: var(--secondary-color); }
-
-.hero-text p { font-size: 1.125rem; color: var(--text-light); margin-bottom: 1.875rem; max-width: 600px; }
-
-.hero-buttons { display: flex; gap: 1rem; flex-wrap: wrap; }
-
-.hero-image { flex: 1; text-align: center; max-width: 380px; margin: 0 auto; animation: fadeInScale 0.8s ease-out 0.2s forwards; opacity: 0; }
-
-.hero-image img { border-radius: 50%; box-shadow: 0 10px 35px var(--shadow-medium); width: 100%; aspect-ratio: 1 / 1; object-fit: cover; border: 5px solid var(--white); }
-
-
-
-/* Animations */
-
-@keyframes fadeInSlideUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
-
-@keyframes fadeInScale { from { opacity: 0; transform: scale(0.95); } to { opacity: 1; transform: scale(1); } }
-
-
-
-/* Buttons */
-
-.btn { display: inline-block; padding: 0.8rem 1.9rem; background-color: var(--secondary-color); color: var(--white); border-radius: 5px; text-decoration: none; font-weight: 500; transition: all 0.3s ease; border: 2px solid transparent; cursor: pointer; text-align: center; box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
-
-.btn:hover, .btn:focus { background-color: #2980b9; transform: translateY(-3px); box-shadow: 0 6px 12px var(--shadow-medium); }
-
-.btn-outline { background-color: transparent; border: 2px solid var(--secondary-color); color: var(--secondary-color); box-shadow: none; }
-
-
-
-/* Sections */
-
-section { padding: 6rem 0; }
-
-section:nth-of-type(even) { background-color: var(--white); }
-
-.section-title { text-align: center; margin-bottom: 3.75rem; }
-
-.section-title h2 { font-size: clamp(1.8rem, 4vw, 2.25rem); color: var(--primary-color); position: relative; display: inline-block; padding-bottom: 1rem; margin-bottom: 0; }
-
-.section-title h2::after { content: ''; position: absolute; bottom: 0; left: 50%; transform: translateX(-50%); width: 80px; height: 4px; background-color: var(--secondary-color); border-radius: 2px; }
-
-
-
-/* About */
-
-.about-content { display: flex; align-items: center; gap: 3rem; }
-
-.about-image { flex: 1; max-width: 450px; }
-
-.about-image img { border-radius: 10px; box-shadow: 0 10px 30px var(--shadow-medium); }
-
-.about-text { flex: 1; }
-
-.about-text h3 { font-size: 1.75rem; margin-bottom: 1.25rem; color: var(--primary-color); }
-
-.about-text p { margin-bottom: 1rem; color: var(--text-light); }
-
-.about-text p:last-of-type { margin-bottom: 1.5rem; }
-
-
-
-/* Experience */
-
-.timeline { position: relative; max-width: 800px; margin: 0 auto; padding: 2rem 0; }
-
-.timeline::after { content: ''; position: absolute; width: 3px; background-color: var(--secondary-color); top: 0; bottom: 0; left: 50%; transform: translateX(-50%); border-radius: 2px; }
-
-.timeline-item { padding: 0.625rem 2.5rem; position: relative; width: 50%; margin-bottom: 1.5rem; /* Added margin bottom */ }
-
-.timeline-item::after { content: ''; position: absolute; width: 22px; height: 22px; background-color: var(--white); border: 4px solid var(--secondary-color); border-radius: 50%; top: 1.25rem; z-index: 1; transition: transform 0.3s ease; }
-
-.timeline-item:hover::after { transform: scale(1.2); }
-
-.timeline-item.left { left: 0; padding-right: 1.5rem; text-align: right; }
-
-.timeline-item.right { left: 50%; padding-left: 1.5rem; text-align: left; }
-
-.timeline-item.left::after { right: -11px; }
-
-.timeline-item.right::after { left: -11px; }
-
-.timeline-content { padding: 1.25rem; background-color: var(--white); border-radius: 8px; box-shadow: 0 5px 15px var(--shadow-light); position: relative; transition: box-shadow 0.3s ease, transform 0.3s ease; border: 1px solid var(--light-color); }
-
-.timeline-item:hover .timeline-content { box-shadow: 0 8px 20px var(--shadow-medium); transform: translateY(-3px); }
-
-.timeline-content h3 { font-size: 1.25rem; margin-bottom: 0.625rem; color: var(--primary-color); }
-
-.timeline-content p { color: var(--text-light); margin-bottom: 0.3125rem; font-size: 0.9rem; }
-
-.timeline-date { font-weight: 600; color: var(--secondary-color); font-size: 0.9rem; margin-bottom: 0.5rem; }
-
-
-
-/* Skills */
-
-.skills-container { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.875rem; } /* Use auto-fit */
-
-.skill-card { background-color: var(--white); padding: 1.875rem; border-radius: 8px; box-shadow: 0 5px 15px var(--shadow-light); transition: transform 0.3s ease, box-shadow 0.3s ease; text-align: center; border: 1px solid var(--light-color); display: flex; flex-direction: column; } /* Added flex */
-
-.skill-card:hover { transform: translateY(-10px); box-shadow: 0 12px 25px var(--shadow-medium); }
-
-.skill-card i { font-size: 2.8rem; color: var(--secondary-color); margin-bottom: 1.25rem; display: inline-block; transition: transform 0.3s ease; }
-
-.skill-card:hover i { transform: scale(1.1); }
-
-.skill-card h3 { font-size: 1.25rem; margin-bottom: 1rem; color: var(--primary-color); }
-
-.skill-card p { color: var(--text-light); font-size: 0.9rem; flex-grow: 1; } /* Added flex-grow */
-
-
-
-/* Publications */
-
-.publications-container { display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 1.875rem; }
-
-.publication-card { background-color: var(--white); border-radius: 8px; overflow: hidden; box-shadow: 0 5px 15px var(--shadow-medium); display: flex; flex-direction: column; transition: transform 0.3s ease, box-shadow 0.3s ease; border: 1px solid var(--light-color); }
-
-.publication-card:hover { transform: translateY(-8px); box-shadow: 0 10px 25px var(--shadow-dark); }
-
-.publication-image { height: 220px; overflow: hidden; position: relative; background-color: #eee; }
-
-.publication-image img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s ease; }
-
-.publication-card:hover .publication-image img { transform: scale(1.05); }
-
-.publication-info { padding: 1.5rem; flex-grow: 1; display: flex; flex-direction: column; }
-
-.publication-info h3 { font-size: 1.2rem; margin-bottom: 0.75rem; color: var(--primary-color); }
-
-.publication-info .meta { display: flex; justify-content: space-between; color: var(--text-light); font-size: 0.875rem; margin-bottom: 1rem; flex-wrap: wrap; gap: 0.5rem; } /* Added wrap and gap */
-
-.publication-info .meta span { display: flex; align-items: center; gap: 0.4rem; }
-
-.publication-info .meta i { color: var(--secondary-color); }
-
-.publication-info p { color: var(--text-light); margin-bottom: 1.2rem; flex-grow: 1; font-size: 0.9rem; }
-
-.publication-info a { color: var(--secondary-color); text-decoration: none; font-weight: 600; transition: color 0.3s ease; align-self: flex-start; margin-top: auto; } /* Added margin-top auto */
-
-.publication-info a:hover, .publication-info a:focus { color: #2980b9; }
-
-
-
-/* Contact */
-
-.contact-container { display: flex; gap: 3rem; flex-wrap: wrap; }
-
-.contact-info { flex: 1; min-width: 300px; }
-
-.contact-info h3 { font-size: 1.5rem; margin-bottom: 1.25rem; color: var(--primary-color); }
-
-.contact-info p { margin-bottom: 1.875rem; color: var(--text-light); }
-
-.contact-details { margin-bottom: 1.875rem; }
-
-.contact-item { display: flex; align-items: center; margin-bottom: 1.2rem; gap: 1rem; }
-
-.contact-item i { width: 45px; height: 45px; background-color: var(--light-color); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: var(--secondary-color); flex-shrink: 0; font-size: 1.1rem; transition: background-color 0.3s ease, color 0.3s ease; }
-
-.contact-item:hover i { background-color: var(--secondary-color); color: var(--white); }
-
-.contact-item div h4 { font-size: 1rem; margin-bottom: 0.25rem; color: var(--primary-color); }
-
-.contact-item div p, .contact-item div a { margin-bottom: 0; color: var(--text-light); font-size: 0.9rem; text-decoration: none; transition: color 0.3s ease; word-break: break-all; }
-
-.contact-item div a:hover, .contact-item div a:focus { color: var(--secondary-color); }
-
-.social-links { display: flex; gap: 1rem; flex-wrap: wrap; }
-
-.social-links a { width: 45px; height: 45px; background-color: var(--light-color); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: var(--primary-color); transition: all 0.3s ease; font-size: 1.2rem; }
-
-.social-links a:hover, .social-links a:focus { background-color: var(--secondary-color); color: var(--white); transform: translateY(-3px) scale(1.05); box-shadow: 0 4px 8px rgba(0,0,0,0.1); }
-
-.contact-form { flex: 1.2; min-width: 300px; background-color: var(--white); padding: 2rem; border-radius: 8px; box-shadow: 0 5px 20px var(--shadow-light); border: 1px solid var(--light-color); }
-
-.form-group { margin-bottom: 1.25rem; }
-
-.form-group label { display: block; margin-bottom: 0.6rem; color: var(--primary-color); font-weight: 500; font-size: 0.9rem; }
-
-.form-group input, .form-group textarea { width: 100%; padding: 0.8rem; border: 1px solid #ddd; border-radius: 5px; font-family: 'Poppins', sans-serif; font-size: 1rem; transition: border-color 0.3s ease, box-shadow 0.3s ease; }
-
-.form-group textarea { min-height: 150px; resize: vertical; }
-
-#form-status { margin-top: 1rem; font-weight: 500; min-height: 1.2em; }
-
-#form-status.success { color: green; }
-
-#form-status.error { color: var(--accent-color); }
-
-
-
-/* Map Section */
-
-.map-section { padding: 4rem 0; background-color: var(--background-light); }
-
-.map-container { max-width: 1100px; margin: 0 auto; padding: 1rem; background-color: var(--white); border-radius: 8px; box-shadow: 0 8px 25px rgba(0, 0, 0, 0.09); border: 1px solid #e0e0e0; }
-
-.map-container iframe { display: block; width: 100%; height: 450px; border: 0; border-radius: 5px; }
-
-.map-title { text-align: center; font-size: 1.6rem; color: var(--primary-color); margin-bottom: 1.5rem; }
-
-
-
-/* Footer */
-
-footer { background-color: var(--primary-color); color: rgba(255, 255, 255, 0.8); padding: 3.5rem 0 1.5rem; text-align: center; }
-
-.footer-content { margin-bottom: 1.5rem; }
-
-.footer-content .logo { color: var(--white); margin-bottom: 0.7rem; font-size: 1.6rem; }
-
-.footer-content p { font-size: 0.95rem; margin-bottom: 1.8rem; }
-
-.footer-links { display: flex; justify-content: center; list-style: none; margin-bottom: 1.8rem; flex-wrap: wrap; gap: 1.2rem; }
-
-.footer-links a { color: rgba(255, 255, 255, 0.8); text-decoration: none; transition: color 0.3s ease; font-weight: 500; }
-
-.footer-links a:hover, .footer-links a:focus { color: var(--secondary-color); }
-
-.copyright { color: rgba(255, 255, 255, 0.6); font-size: 0.875rem; }
-
-
-
-/* Responsive Styles */
-
-@media (max-width: 991.98px) {
-
-:root { font-size: 15px; }
-
-.hero-content, .about-content { flex-direction: column; text-align: center; }
-
-.hero-text { margin-bottom: 3rem; animation: none; }
-
-.hero-image { animation: none; opacity: 1; }
-
-.hero-text p, .about-text p { margin-left: auto; margin-right: auto; max-width: 550px; }
-
-.hero-buttons { justify-content: center; }
-
-.about-image { margin: 0 auto 2rem auto; }
-
-.timeline-item.left { text-align: left; }
-
-}
-
-
-
-@media (max-width: 767.98px) {
-
-:root { font-size: 14px; }
-
-.menu-toggle { display: block; }
-
-.navbar { padding: 0.8rem 0; }
-
-.nav-links { position: fixed; top: 0; right: -100%; width: min(75%, 320px); height: 100vh; background-color: var(--white); box-shadow: -5px 0 15px rgba(0, 0, 0, 0.1); flex-direction: column; justify-content: flex-start; align-items: stretch; padding: 6rem 1.5rem 2rem; transition: right 0.4s cubic-bezier(0.23, 1, 0.32, 1); z-index: 1001; }
-
-.nav-links.active { right: 0; }
-
-.nav-links li { margin-left: 0; width: 100%; margin-bottom: 0.5rem; }
-
-.nav-links a { display: block; padding: 0.9rem 0.5rem; font-size: 1.1rem; border-bottom: 1px solid var(--light-color); }
-
-.nav-links a::after { display: none; }
-
-body.nav-open::before { content: ''; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(0, 0, 0, 0.5); z-index: 1000; backdrop-filter: blur(2px); }
-
-.language-switcher-container { order: 10; margin-top: auto; padding-top: 1rem; border-top: 1px solid var(--light-color); }
-
-.language-switcher { margin-left: 0; border: none; padding: 0.5rem 0; justify-content: center; }
-
-
-
-section { padding: 4rem 0; }
-
-.hero { padding-top: 7rem; padding-bottom: 4rem; min-height: auto; }
-
-.timeline::after { left: 20px; transform: none; }
-
-.timeline-item { width: 100%; padding-left: 55px; padding-right: 1rem; text-align: left; }
-
-.timeline-item.left, .timeline-item.right { left: 0; }
-
-.timeline-item::after, .timeline-item.left::after, .timeline-item.right::after { left: 9px; top: 1.5rem; }
-
-
-
-.skills-container { grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); } /* Adjust minmax for smaller screens */
-
-.map-section { padding: 3rem 0; }
-
-.map-container { padding: 0.5rem; }
-
-.map-container iframe { height: 350px; }
-
-}
-
-
-
-@media (max-width: 575.98px) {
-
-.hero-text h1 { font-size: 1.9rem; }
-
-.section-title h2 { font-size: 1.7rem; }
-
-.contact-info, .contact-form { min-width: unset; flex-basis: 100%; }
-
-.contact-form { padding: 1.5rem; }
-
-.footer-links { gap: 0.8rem 1.5rem; }
-
-.timeline-item { padding-left: 45px; } /* Adjust padding for smaller dot space */
-
-.timeline-item::after, .timeline-item.left::after, .timeline-item.right::after { left: 5px; width:18px; height: 18px; border-width: 3px;} /* Adjust dot size */
-
-}
-
-</style>
-
-
-
+<link rel="stylesheet" href="styles (1).css">
 </head>
-
 <body>
-
 <!-- Header -->
-
 <header>
-
 <div class="container">
-
 <nav class="navbar" aria-label="Main Navigation">
-
 <a href="#home" class="logo">Dr. <span>Jomaa</span></a>
-
 <button class="menu-toggle" aria-label="Toggle menu" aria-expanded="false" aria-controls="main-nav-links">
-
 <i class="fas fa-bars" aria-hidden="true"></i>
-
 <span class="sr-only">Menu</span>
-
 </button>
-
 <ul class="nav-links" id="main-nav-links">
-
 <li><a href="#home" id="nav-home">Home</a></li>
-
 <li><a href="#about" id="nav-about">About</a></li>
-
 <li><a href="#experience" id="nav-experience">Experience</a></li>
-
 <li><a href="#skills" id="nav-skills">Skills</a></li>
-
 <li><a href="#publications" id="nav-publications">Publications</a></li>
-
 <li><a href="#contact" id="nav-contact">Contact</a></li>
-
 <!-- Language Switcher -->
-
 <li class="language-switcher-container">
-
 <div class="language-switcher">
-
 <button data-lang="en" class="active" aria-current="true">EN</button>
-
 <span class="language-separator">|</span>
-
 <button data-lang="fr">FR</button>
-
 </div>
-
+            </li>
+            <li>
+                <button id="dark-mode-toggle" aria-label="Toggle dark mode">
+                    <i class="fas fa-moon" aria-hidden="true"></i> <span class="sr-only">Toggle Dark Mode</span>
+                </button>
 </li>
-
 </ul>
-
 </nav>
-
 </div>
-
 </header>
 
-
-
 <!-- Hero Section -->
-
 <section class="hero" id="home">
-
 <div class="container">
-
 <div class="hero-content">
-
 <div class="hero-text">
-
 <h1 id="hero-title">Dr. Wassim <span>Jomaa</span></h1>
-
 <p id="hero-subtitle">University Assistant, Researcher, Music Therapy & Crisis Management Expert</p>
-
 <div class="hero-buttons">
-
 <a href="#contact" class="btn" id="hero-contact-btn">Contact Me</a>
-
 </div>
-
 </div>
-
 <div class="hero-image">
-
 <img src="https://i1.rgstatic.net/ii/profile.image/11431281272521721-1724160105555_Q512/Wassim-Jomaa.jpg" alt="Portrait photo of Dr. Wassim Jomaa" id="hero-profile-img">
-
 </div>
-
 </div>
-
 </div>
-
 </section>
-
-
 
 <!-- About Section -->
-
 <section id="about">
-
 <div class="container">
-
 <div class="section-title"> <h2 id="about-title">About Me</h2> </div>
-
 <div class="about-content">
-
 <div class="about-image">
-
 <!-- Using a more relevant placeholder for academic/research context -->
-
 <img src="https://images.unsplash.com/photo-1519389950473-47ba0277781c?ixlib=rb-1.2.1&auto=format&fit=crop&w=450&q=80" alt="Professional working environment" id="about-img" loading="lazy">
-
 </div>
-
 <div class="about-text">
-
 <h3 id="about-subtitle">Biography</h3>
-
 <p id="about-para1">Dr. Wassim Jomaa is a highly accomplished University Assistant and Researcher at the University of Sousse with diverse expertise spanning Music Therapy, Crisis Management (both financial and humanitarian), Neuroscience, and Education.</p>
-
 <p id="about-para2">He holds a PhD in Art and Cultural Studies (Musicology & Social Psychology) from the University of Tunis. His work focuses on the therapeutic application of music, particularly in healthcare and crisis contexts. He directs the Music Therapy Master's program at the Faculty of Medicine of Sousse and leads the Mediterranean Association of Music Therapy (AMM).</p>
-
 <p id="about-para3">Dr. Jomaa is also a certified Project Management Professional (PMP), ISO 21001 Lead Auditor, CFA charterholder, and Chief Investment Officer. He serves as President of the Tunisian Red Crescent (Hammam Sousse) and Director of a TRC/UNHCR refugee program, demonstrating a unique blend of academic, therapeutic, financial, and humanitarian leadership.</p>
-
 <a href="#experience" class="btn" id="about-experience-btn">View Experience</a>
-
 </div>
-
 </div>
-
 </div>
-
 </section>
-
-
 
 <!-- Experience Section -->
-
 <section id="experience">
-
 <div class="container">
-
 <div class="section-title"> <h2 id="experience-title">Experience & Research</h2> </div>
-
 <div class="timeline">
-
 <!-- Academic & Therapy Roles -->
-
 <article class="timeline-item left"> <div class="timeline-content"> <h3 id="exp1-title">Assistant Professor</h3> <p class="timeline-date" id="exp1-date">Sept 2018 - Present</p> <p id="exp1-desc">Higher Institute of Music of Sousse (Univ. Sousse). Teaching music theory, neurosciences of music, music therapy, Oud performance. Head of Music & New Technologies Dept.</p> </div> </article>
-
 <article class="timeline-item right"> <div class="timeline-content"> <h3 id="exp6-title">Director, Music Therapy Master's Program</h3> <p class="timeline-date" id="exp6-date">Ongoing</p> <p id="exp6-desc">Leading the joint Master's program (Faculty of Medicine & Higher Institute of Musicology of Sousse).</p> </div> </article>
-
 <article class="timeline-item left"> <div class="timeline-content"> <h3 id="exp7-title">President, Mediterranean Association of Music Therapy (AMM)</h3> <p class="timeline-date" id="exp7-date">Ongoing</p> <p id="exp7-desc">Leading the regional association promoting music therapy practice and research across the Mediterranean.</p> </div> </article>
-
 <article class="timeline-item right"> <div class="timeline-content"> <h3 id="exp8-title">Coordinator, HEALING Project</h3> <p class="timeline-date" id="exp8-date">2020 - 2023</p> <p id="exp8-desc">Responsible for monitoring the 'Art Therapy in Higher Educational Institutions' project (Jordan & Tunisia).</p> </div> </article>
-
 <article class="timeline-item left"> <div class="timeline-content"> <h3 id="exp2-title">Doctorate Awarded (PhD)</h3> <p class="timeline-date" id="exp2-date">Dec 2017</p> <p id="exp2-desc">PhD in Art And Cultural Studies (Musicology & Social Psychology) from the University Of Tunis.</p> </div> </article>
 
-
-
 <!-- Financial Roles -->
-
 <article class="timeline-item right"> <div class="timeline-content"> <h3 id="exp3-title">Chief Investment Officer</h3> <p class="timeline-date" id="exp3-date">Feb 2023 - Present</p> <p id="exp3-desc">The Family Office Company BSC (c). Previously CIO at Capital Investments DIFC (2021-2023). CFA Charterholder.</p> </div> </article>
-
 <article class="timeline-item left"> <div class="timeline-content"> <h3 id="exp9-title">Senior Portfolio / Fund Manager</h3> <p class="timeline-date" id="exp9-date">2004 - 2021 (Various Roles)</p> <p id="exp9-desc">Extensive experience in asset management and investment strategy (e.g., Qatar National Bank, AB INVEST).</p> </div> </article>
 
-
-
 <!-- Humanitarian Roles -->
-
 <article class="timeline-item right"> <div class="timeline-content"> <h3 id="exp4-title">President, Tunisian Red Crescent Branch</h3> <p class="timeline-date" id="exp4-date">Ongoing</p> <p id="exp4-desc">Leading the Hammam Sousse branch, coordinating local humanitarian actions and crisis response (e.g., COVID-19 support).</p> </div> </article>
-
 <article class="timeline-item left"> <div class="timeline-content"> <h3 id="exp5-title">Director, TRC/UNHCR Refugee Program</h3> <p class="timeline-date" id="exp5-date">Ongoing</p> <p id="exp5-desc">Managing the program for protection and assistance to refugees in collaboration with UNHCR. Participant in UNHCR MENA consultations.</p> </div> </article>
 
-
-
 <!-- Certifications -->
-
 <article class="timeline-item right"> <div class="timeline-content"> <h3 id="exp10-title">Certifications</h3> <p class="timeline-date" id="exp10-date">2017 (PMP), 2019 (ISO Auditor)</p> <p id="exp10-desc">Project Management Professional (PMP) from PMI and ISO 21001 Lead Auditor for educational organizations.</p> </div> </article>
-
 </div>
-
 </div>
-
 </section>
-
-
 
 <!-- Skills Section -->
-
 <section id="skills">
-
 <div class="container">
-
 <div class="section-title"> <h2 id="skills-title">Certifications & Skills</h2> </div>
-
 <div class="skills-container">
-
 <div class="skill-card"> <i class="fas fa-music" aria-hidden="true"></i> <h3 id="skill1-title">Music Therapy</h3> <p id="skill1-desc">Expert in therapeutic applications (e.g., anxiety reduction in healthcare), Director of Master's program, President of Mediterranean Association of Music Therapy (AMM).</p> </div>
-
 <div class="skill-card"> <i class="fas fa-project-diagram" aria-hidden="true"></i> <h3 id="skill2-title">Project Management (PMP)</h3> <p id="skill2-desc">Certified PMP professional skilled in leading and directing complex international research, educational, and humanitarian projects.</p> </div>
-
 <div class="skill-card"> <i class="fas fa-graduation-cap" aria-hidden="true"></i> <h3 id="skill3-title">Educational Management (ISO 21001)</h3> <p id="skill3-desc">Certified ISO 21001 Lead Auditor with expertise in quality management systems and curriculum development for educational organizations.</p> </div>
-
 <div class="skill-card"> <i class="fas fa-hand-holding-heart" aria-hidden="true"></i> <h3 id="skill4-title">Humanitarian & Crisis Management</h3> <p id="skill4-desc">President of Red Crescent branch, Director of TRC/UNHCR refugee program. Experienced in crisis response, aid coordination, and support for vulnerable populations.</p> </div>
-
 <div class="skill-card"> <i class="fas fa-brain" aria-hidden="true"></i> <h3 id="skill5-title">Neuroscience of Music</h3> <p id="skill5-desc">Teaching and research interest in the neurosciences of music, exploring its impact on the brain and therapeutic applications.</p> </div>
-
 <div class="skill-card"> <i class="fas fa-chalkboard-teacher" aria-hidden="true"></i> <h3 id="skill6-title">Higher Education Leadership</h3> <p id="skill6-desc">Experienced Assistant Professor, Head of Department, Director of Master's Program, contributing to curriculum development (e.g., HEALING project).</p> </div>
-
 <div class="skill-card"> <i class="fas fa-chart-line" aria-hidden="true"></i> <h3 id="skill7-title">Financial & Investment Management</h3> <p id="skill7-desc">Chief Investment Officer (current & past roles), CFA charterholder. Expertise in asset/portfolio management, investment strategy, and financial crisis analysis.</p> </div>
-
 </div>
-
 </div>
-
 </section>
-
-
 
 <!-- Publications Section -->
-
 <section id="publications">
-
 <div class="container">
-
 <div class="section-title"> <h2 id="publications-title">Media & Publications</h2> </div>
-
 <div class="publications-container">
-
 <article class="publication-card">
-
 <div class="publication-image"> <img src="https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?ixlib=rb-1.2.1&auto=format&fit=crop&w=350&q=80" alt="Medical research concept" loading="lazy"> </div>
-
 <div class="publication-info">
-
 <h3 id="pub1-title">Effect of music on patient anxiety undergoing bronchoscopy</h3>
-
 <div class="meta">
-
 <span id="pub1-date"><i class="fas fa-calendar-alt" aria-hidden="true"></i> Mar 2024</span>
-
 <span id="pub1-type"><i class="fas fa-flask" aria-hidden="true"></i> Preprint/RCT</span>
-
 </div>
-
 <p id="pub1-desc">Co-authored randomized controlled trial investigating music's impact on anxiety during bronchoscopy procedures.</p>
-
 <a href="#" target="_blank" rel="noopener noreferrer" id="pub1-link">Read More →</a>
-
 </div>
-
 </article>
-
 <article class="publication-card">
-
 <div class="publication-image"> <img src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?ixlib=rb-1.2.1&auto=format&fit=crop&w=350&q=80" alt="Medical journal or literature review concept" loading="lazy"> </div>
-
 <div class="publication-info">
-
 <h3 id="pub2-title">Efficacy of music in the endoscopy setting</h3>
-
 <div class="meta">
-
 <span id="pub2-date"><i class="fas fa-calendar-alt" aria-hidden="true"></i> Feb 2020</span>
-
 <span id="pub2-type"><i class="fas fa-book-reader" aria-hidden="true"></i> Literature Review</span>
-
 </div>
-
 <p id="pub2-desc">Co-authored literature review (Gastrointestinal Nursing) on music as a non-pharmacological intervention during endoscopy.</p>
-
 <a href="#" target="_blank" rel="noopener noreferrer" id="pub2-link">Read More →</a>
-
 </div>
-
 </article>
-
 <article class="publication-card">
-
 <div class="publication-image"> <img src="https://images.unsplash.com/photo-1556761175-5973dc0f32e7?ixlib=rb-1.2.1&auto=format&fit=crop&w=350&q=80" alt="International collaboration or project concept" loading="lazy"> </div>
-
 <div class="publication-info">
-
 <h3 id="pub3-title">HEALING Project Contributor</h3>
-
 <div class="meta">
-
 <span id="pub3-date"><i class="fas fa-calendar-alt" aria-hidden="true"></i> 2020-2023</span>
-
 <span id="pub3-type"><i class="fas fa-project-diagram" aria-hidden="true"></i> Intl. Project</span>
-
 </div>
-
 <p id="pub3-desc">Coordinator for monitoring the 'Art Therapy in Higher Educational Institutions' project (Jordan & Tunisia), developing multidisciplinary diplomas.</p>
-
 <a href="#" target="_blank" rel="noopener noreferrer" id="pub3-link">Read More →</a>
-
 </div>
-
 </article>
-
 </div>
-
 </div>
-
 </section>
 
-
-
 <!-- Contact Section -->
-
 <section id="contact">
-
 <div class="container">
-
 <div class="section-title"> <h2 id="contact-title">Contact Me</h2> </div>
-
 <div class="contact-container">
-
 <div class="contact-info">
-
 <h3 id="contact-getintouch">Get In Touch</h3>
-
 <p id="contact-intro">For academic collaborations, speaking engagements, consultation (music therapy, crisis management, finance), or humanitarian partnerships, please reach out.</p>
-
 <address class="contact-details">
-
 <div class="contact-item">
-
 <i class="fas fa-map-marker-alt" aria-hidden="true"></i>
-
 <div> <h4 id="contact-location-label">Location</h4> <p>Hammam Sousse, Tunisia</p> </div>
-
 </div>
-
 <div class="contact-item">
-
 <i class="fas fa-envelope" aria-hidden="true"></i>
-
 <div>
-
 <h4 id="contact-email-label">Email</h4>
-
 <p><a href="mailto:jomaawassim@gmail.com">jomaawassim@gmail.com</a></p>
-
 </div>
-
 </div>
-
 <div class="contact-item">
-
 <i class="fas fa-phone" aria-hidden="true"></i>
-
 <div>
-
 <h4 id="contact-phone-label">Phone</h4>
-
 <p><a href="tel:+21654434118">54 434 118</a></p>
-
 </div>
-
 </div>
-
 </address>
-
 <h3 id="contact-follow">Follow Me</h3>
-
 <div class="social-links">
 <a href="https://tn.linkedin.com/in/wassim-jomaa-25866045" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn Profile"><i class="fab fa-linkedin-in" aria-hidden="true"></i></a>
 <a href="https://www.facebook.com/Jom.wass/" target="_blank" rel="noopener noreferrer" aria-label="Facebook Profile"><i class="fab fa-facebook-f" aria-hidden="true"></i></a>
@@ -847,745 +211,57 @@ section { padding: 4rem 0; }
 <a href="mailto:jomaawassim@gmail.com" aria-label="Email"><i class="fas fa-envelope" aria-hidden="true"></i></a>
 </div>
 
-
 </div>
-
 <div class="contact-form">
-
 <form id="contact-form" method="POST">
-
 <div class="form-group"> <label for="name" id="contact-name-label">Name</label> <input type="text" id="name" name="name" required autocomplete="name"> </div>
-
 <div class="form-group"> <label for="email" id="contact-email-label-form">Email</label> <input type="email" id="email" name="email" required autocomplete="email"> </div>
-
 <div class="form-group"> <label for="subject" id="contact-subject-label">Subject</label> <input type="text" id="subject" name="subject" required> </div>
-
 <div class="form-group"> <label for="message" id="contact-message-label">Message</label> <textarea id="message" name="message" required></textarea> </div>
-
 <button type="submit" class="btn" id="contact-send-btn">Send Message</button>
-
 </form>
-
 <div id="form-status" role="status" aria-live="polite"></div>
-
 </div>
-
 </div>
-
 </div>
-
 </section>
-
-
 
 <!-- Map Section -->
-
 <section class="map-section" aria-labelledby="map-section-title">
-
 <div class="container">
-
 <h2 id="map-section-title" class="map-title">My Location</h2>
-
 <div class="map-container" aria-label="Location Map">
-
 <iframe
-
 title="Location of Hammam Sousse, Tunisia on Google Maps"
-
 src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d25919.26598861505!2d10.58005187431641!3d35.860051300000004!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x130275759acfdb3b%3A0x9e1a8e3a6a5e5e5e!2sHammam%20Sousse%2C%20Tunisia!5e0!3m2!1sen!2stn!4v1694174044718!5m2!1sen!2stn"
-
 allowfullscreen=""
-
 loading="lazy"
-
 referrerpolicy="no-referrer-when-downgrade">
-
 </iframe>
-
 </div>
-
 </div>
-
 </section>
 
-
-
 <!-- Footer -->
-
 <footer>
-
 <div class="container">
-
 <div class="footer-content">
-
 <a href="#home" class="logo">Dr. <span>Jomaa</span></a>
-
 <p id="footer-tagline">Academic | Researcher | Music Therapy | Crisis Management | Humanitarian Leader</p>
-
 </div>
-
 <nav aria-label="Footer Navigation">
-
 <ul class="footer-links">
-
 <li><a href="#home" id="footer-nav-home">Home</a></li>
-
 <li><a href="#about" id="footer-nav-about">About</a></li>
-
 <li><a href="#experience" id="footer-nav-experience">Experience</a></li>
-
 <li><a href="#skills" id="footer-nav-skills">Skills</a></li>
-
 <li><a href="#publications" id="footer-nav-publications">Publications</a></li>
-
 <li><a href="#contact" id="footer-nav-contact">Contact</a></li>
-
 </ul>
-
 </nav>
-
 <div class="copyright"> © <span id="current-year">2024</span> Dr. Wassim Jomaa. <span id="footer-rights">All Rights Reserved.</span> </div>
-
 </div>
-
 </footer>
-
-
-
-<script defer>
-
-document.addEventListener('DOMContentLoaded', () => {
-
-
-
-// --- UPDATED TRANSLATIONS ---
-
-const translations = {
-
-en: {
-
-"page-title": "Dr. Wassim Jomaa - Music Therapy, Crisis Management & Research",
-
-"meta-description": "Personal website of Dr. Wassim Jomaa, University Assistant, Researcher, Expert in Music Therapy, Crisis Management (Financial & Humanitarian), Neuroscience, and Education based in Sousse, Tunisia.",
-
-"nav-home": "Home", "nav-about": "About", "nav-experience": "Experience", "nav-skills": "Skills", "nav-publications": "Publications", "nav-contact": "Contact",
-
-"hero-title": "Dr. Wassim <span>Jomaa</span>",
-
-"hero-subtitle": "University Assistant, Researcher, Music Therapy & Crisis Management Expert, PMP, ISO Auditor, CFA",
-
-"hero-contact-btn": "Contact Me",
-
-"about-title": "About Me", "about-subtitle": "Biography",
-
-"about-para1": "Dr. Wassim Jomaa is a highly accomplished University Assistant and Researcher at the University of Sousse with diverse expertise spanning Music Therapy, Crisis Management (both financial and humanitarian), Neuroscience, and Education.",
-
-"about-para2": "He holds a PhD in Art and Cultural Studies (Musicology & Social Psychology) from the University of Tunis. His work focuses on the therapeutic application of music, particularly in healthcare and crisis contexts. He directs the Music Therapy Master's program at the Faculty of Medicine of Sousse and leads the Mediterranean Association of Music Therapy (AMM).",
-
-"about-para3": "Dr. Jomaa is also a certified Project Management Professional (PMP), ISO 21001 Lead Auditor, CFA charterholder, and Chief Investment Officer. He serves as President of the Tunisian Red Crescent (Hammam Sousse) and Director of a TRC/UNHCR refugee program, demonstrating a unique blend of academic, therapeutic, financial, and humanitarian leadership.",
-
-"about-experience-btn": "View Experience",
-
-"experience-title": "Experience & Research",
-
-"exp1-title": "Assistant Professor", "exp1-date": "Sept 2018 - Present", "exp1-desc": "Higher Institute of Music of Sousse (Univ. Sousse). Teaching music theory, neurosciences of music, music therapy, Oud performance. Head of Music & New Technologies Dept.",
-
-"exp2-title": "Doctorate Awarded (PhD)", "exp2-date": "Dec 2017", "exp2-desc": "PhD in Art And Cultural Studies (Musicology & Social Psychology) from the University Of Tunis.",
-
-"exp3-title": "Chief Investment Officer", "exp3-date": "Feb 2023 - Present", "exp3-desc": "The Family Office Company BSC (c). Previously CIO at Capital Investments DIFC (2021-2023). CFA Charterholder.",
-
-"exp4-title": "President, Tunisian Red Crescent Branch", "exp4-date": "Ongoing", "exp4-desc": "Leading the Hammam Sousse branch, coordinating local humanitarian actions and crisis response (e.g., COVID-19 support).",
-
-"exp5-title": "Director, TRC/UNHCR Refugee Program", "exp5-date": "Ongoing", "exp5-desc": "Managing the program for protection and assistance to refugees in collaboration with UNHCR. Participant in UNHCR MENA consultations.",
-
-"exp6-title": "Director, Music Therapy Master's Program", "exp6-date": "Ongoing", "exp6-desc": "Leading the joint Master's program (Faculty of Medicine & Higher Institute of Musicology of Sousse).",
-
-"exp7-title": "President, Mediterranean Association of Music Therapy (AMM)", "exp7-date": "Ongoing", "exp7-desc": "Leading the regional association promoting music therapy practice and research across the Mediterranean.",
-
-"exp8-title": "Coordinator, HEALING Project", "exp8-date": "2020 - 2023", "exp8-desc": "Responsible for monitoring the 'Art Therapy in Higher Educational Institutions' project (Jordan & Tunisia).",
-
-"exp9-title": "Senior Portfolio / Fund Manager", "exp9-date": "2004 - 2021 (Various Roles)", "exp9-desc": "Extensive experience in asset management and investment strategy (e.g., Qatar National Bank, AB INVEST).",
-
-"exp10-title": "Certifications", "exp10-date": "2017 (PMP), 2019 (ISO Auditor)", "exp10-desc": "Project Management Professional (PMP) from PMI and ISO 21001 Lead Auditor for educational organizations.",
-
-"skills-title": "Certifications & Skills",
-
-"skill1-title": "Music Therapy", "skill1-desc": "Expert in therapeutic applications (e.g., anxiety reduction in healthcare), Director of Master's program, President of Mediterranean Association of Music Therapy (AMM).",
-
-"skill2-title": "Project Management (PMP)", "skill2-desc": "Certified PMP professional skilled in leading and directing complex international research, educational, and humanitarian projects.",
-
-"skill3-title": "Educational Management (ISO 21001)", "skill3-desc": "Certified ISO 21001 Lead Auditor with expertise in quality management systems and curriculum development for educational organizations.",
-
-"skill4-title": "Humanitarian & Crisis Management", "skill4-desc": "President of Red Crescent branch, Director of TRC/UNHCR refugee program. Experienced in crisis response, aid coordination, and support for vulnerable populations.",
-
-"skill5-title": "Neuroscience of Music", "skill5-desc": "Teaching and research interest in the neurosciences of music, exploring its impact on the brain and therapeutic applications.",
-
-"skill6-title": "Higher Education Leadership", "skill6-desc": "Experienced Assistant Professor, Head of Department, Director of Master's Program, contributing to curriculum development (e.g., HEALING project).",
-
-"skill7-title": "Financial & Investment Management", "skill7-desc": "Chief Investment Officer (current & past roles), CFA charterholder. Expertise in asset/portfolio management, investment strategy, and financial crisis analysis.",
-
-"publications-title": "Media & Publications",
-
-"pub1-title": "Effect of music on patient anxiety undergoing bronchoscopy", "pub1-date": "<i class='fas fa-calendar-alt' aria-hidden='true'></i> Mar 2024", "pub1-type": "<i class='fas fa-flask' aria-hidden='true'></i> Preprint/RCT", "pub1-desc": "Co-authored randomized controlled trial investigating music's impact on anxiety during bronchoscopy procedures.", "pub1-link": "Read More <span aria-hidden='true'>→</span>",
-
-"pub2-title": "Efficacy of music in the endoscopy setting", "pub2-date": "<i class='fas fa-calendar-alt' aria-hidden='true'></i> Feb 2020", "pub2-type": "<i class='fas fa-book-reader' aria-hidden='true'></i> Literature Review", "pub2-desc": "Co-authored literature review (Gastrointestinal Nursing) on music as a non-pharmacological intervention during endoscopy.", "pub2-link": "Read More <span aria-hidden='true'>→</span>",
-
-"pub3-title": "HEALING Project Contributor", "pub3-date": "<i class='fas fa-calendar-alt' aria-hidden='true'></i> 2020-2023", "pub3-type": "<i class='fas fa-project-diagram' aria-hidden='true'></i> Intl. Project", "pub3-desc": "Coordinator for monitoring the 'Art Therapy in Higher Educational Institutions' project (Jordan & Tunisia), developing multidisciplinary diplomas.", "pub3-link": "Read More <span aria-hidden='true'>→</span>",
-
-"contact-title": "Contact Me", "contact-getintouch": "Get In Touch",
-
-"contact-intro": "For academic collaborations, speaking engagements, consultation (music therapy, crisis management, finance), or humanitarian partnerships, please reach out.",
-
-"contact-location-label": "Location", "contact-email-label": "Email", "contact-phone-label": "Phone", "contact-follow": "Follow Me",
-
-"contact-name-label": "Name", "contact-email-label-form": "Email", "contact-subject-label": "Subject", "contact-message-label": "Message", "contact-send-btn": "Send Message",
-
-"form-status-sending": "Sending message...", "form-status-success": "Thank you! Your message has been sent successfully.", "form-status-error-generic": "Oops! There was a problem submitting your form. Please try again.", "form-status-error-network": "Oops! Network error. Please check your connection and try again.",
-
-"map-section-title": "My Location",
-
-"footer-tagline": "Academic | Researcher | Music Therapy | Crisis Management | Humanitarian Leader",
-
-"footer-nav-home": "Home", "footer-nav-about": "About", "footer-nav-experience": "Experience", "footer-nav-skills": "Skills", "footer-nav-publications": "Publications", "footer-nav-contact": "Contact",
-
-"footer-rights": "All Rights Reserved.",
-
-"alt-hero-profile-img": "Portrait photo of Dr. Wassim Jomaa", "alt-about-img": "Professional working environment", "alt-pub1-img": "Medical research concept", "alt-pub2-img": "Medical journal or literature review concept", "alt-pub3-img": "International collaboration or project concept",
-
-},
-
-fr: { // --- FRENCH TRANSLATIONS (Generated/Adapted - Review recommended) ---
-
-"page-title": "Dr. Wassim Jomaa - Musicothérapie, Gestion de Crise & Recherche",
-
-"meta-description": "Site personnel du Dr. Wassim Jomaa, Assistant Universitaire, Chercheur, Expert en Musicothérapie, Gestion de Crise (Financière & Humanitaire), Neurosciences et Éducation basé à Sousse, Tunisie.",
-
-"nav-home": "Accueil", "nav-about": "À Propos", "nav-experience": "Expérience", "nav-skills": "Compétences", "nav-publications": "Publications", "nav-contact": "Contact",
-
-"hero-title": "Dr. Wassim <span>Jomaa</span>",
-
-"hero-subtitle": "Assistant Universitaire, Chercheur, Expert Musicothérapie & Gestion de Crise, PMP, Auditeur ISO, CFA",
-
-"hero-contact-btn": "Contactez-moi",
-
-"about-title": "À Propos de Moi", "about-subtitle": "Biographie",
-
-"about-para1": "Dr. Wassim Jomaa est un Assistant Universitaire et Chercheur très accompli à l'Université de Sousse, avec une expertise diversifiée couvrant la Musicothérapie, la Gestion de Crise (financière et humanitaire), les Neurosciences et l'Éducation.",
-
-"about-para2": "Il détient un Doctorat en Arts et Études Culturelles (Musicologie & Psychologie Sociale) de l'Université de Tunis. Son travail se concentre sur l'application thérapeutique de la musique, notamment dans les contextes de soins de santé et de crise. Il dirige le Master en Musicothérapie à la Faculté de Médecine de Sousse et préside l'Association Méditerranéenne de Musicothérapie (AMM).",
-
-"about-para3": "Dr. Jomaa est également certifié Project Management Professional (PMP), Auditeur Principal ISO 21001, détenteur de la charte CFA et Directeur des Investissements (Chief Investment Officer). Il est Président du Croissant-Rouge Tunisien (Hammam Sousse) et Directeur d'un programme TRC/UNHCR pour les réfugiés, démontrant un mélange unique de leadership académique, thérapeutique, financier et humanitaire.",
-
-"about-experience-btn": "Voir l'Expérience",
-
-"experience-title": "Expérience & Recherche",
-
-"exp1-title": "Assistant Universitaire", "exp1-date": "Sept 2018 - Présent", "exp1-desc": "Institut Supérieur de Musique de Sousse (Univ. Sousse). Enseignement : théorie musicale, neurosciences de la musique, musicothérapie, Oud. Chef du Dépt. Musique & Nouvelles Technologies.",
-
-"exp2-title": "Doctorat Obtenu (PhD)", "exp2-date": "Déc 2017", "exp2-desc": "Doctorat en Arts et Études Culturelles (Musicologie & Psychologie Sociale) de l'Université de Tunis.",
-
-"exp3-title": "Directeur des Investissements (CIO)", "exp3-date": "Fév 2023 - Présent", "exp3-desc": "The Family Office Company BSC (c). Précédemment CIO chez Capital Investments DIFC (2021-2023). Détenteur charte CFA.",
-
-"exp4-title": "Président, Branche du Croissant-Rouge Tunisien", "exp4-date": "En cours", "exp4-desc": "Direction de la branche de Hammam Sousse, coordination des actions humanitaires locales et réponse aux crises (ex: support COVID-19).",
-
-"exp5-title": "Directeur, Programme Réfugiés TRC/UNHCR", "exp5-date": "En cours", "exp5-desc": "Gestion du programme de protection et d'assistance aux réfugiés en collaboration avec l'UNHCR. Participant aux consultations UNHCR MENA.",
-
-"exp6-title": "Directeur, Master en Musicothérapie", "exp6-date": "En cours", "exp6-desc": "Direction du programme de Master conjoint (Faculté de Médecine & Institut Supérieur de Musicologie de Sousse).",
-
-"exp7-title": "Président, Association Méditerranéenne de Musicothérapie (AMM)", "exp7-date": "En cours", "exp7-desc": "Direction de l'association régionale promouvant la pratique et la recherche en musicothérapie en Méditerranée.",
-
-"exp8-title": "Coordinateur, Projet HEALING", "exp8-date": "2020 - 2023", "exp8-desc": "Responsable du suivi du projet 'Art-thérapie dans les Établissements d'Enseignement Supérieur' (Jordanie & Tunisie).",
-
-"exp9-title": "Gestionnaire de Portefeuille Senior / Fonds", "exp9-date": "2004 - 2021 (Divers Rôles)", "exp9-desc": "Vaste expérience en gestion d'actifs et stratégie d'investissement (ex: Qatar National Bank, AB INVEST).",
-
-"exp10-title": "Certifications", "exp10-date": "2017 (PMP), 2019 (Auditeur ISO)", "exp10-desc": "Project Management Professional (PMP) du PMI et Auditeur Principal ISO 21001 pour les organismes éducatifs.",
-
-"skills-title": "Certifications & Compétences",
-
-"skill1-title": "Musicothérapie", "skill1-desc": "Expert en applications thérapeutiques (ex: réduction anxiété), Directeur de Master, Président de l'Association Méditerranéenne de Musicothérapie (AMM).",
-
-"skill2-title": "Gestion de Projet (PMP)", "skill2-desc": "Professionnel certifié PMP, compétent pour diriger des projets complexes internationaux de recherche, éducatifs et humanitaires.",
-
-"skill3-title": "Management Éducatif (ISO 21001)", "skill3-desc": "Auditeur Principal certifié ISO 21001 avec expertise en systèmes de management de la qualité et développement de curriculum.",
-
-"skill4-title": "Gestion Humanitaire & de Crise", "skill4-desc": "Président branche Croissant-Rouge, Directeur programme réfugiés TRC/UNHCR. Expérience en réponse aux crises, coordination aide, soutien populations vulnérables.",
-
-"skill5-title": "Neuroscience de la Musique", "skill5-desc": "Intérêt pour l'enseignement et la recherche en neurosciences de la musique, explorant son impact cérébral et ses applications thérapeutiques.",
-
-"skill6-title": "Leadership Enseignement Supérieur", "skill6-desc": "Assistant Universitaire expérimenté, Chef de Département, Directeur de Master, contribuant au développement curriculaire (ex: projet HEALING).",
-
-"skill7-title": "Gestion Financière & Investissement", "skill7-desc": "Directeur des Investissements (CIO - rôles actuel & passés), détenteur charte CFA. Expertise en gestion actifs/portefeuille, stratégie d'investissement, analyse crises financières.",
-
-"publications-title": "Médias & Publications",
-
-"pub1-title": "Effet de la musique sur l'anxiété des patients lors d'une bronchoscopie", "pub1-date": "<i class='fas fa-calendar-alt' aria-hidden='true'></i> Mars 2024", "pub1-type": "<i class='fas fa-flask' aria-hidden='true'></i> Prépublication/ECR", "pub1-desc": "Essai contrôlé randomisé co-écrit étudiant l'impact de la musique sur l'anxiété pendant les procédures de bronchoscopie.", "pub1-link": "Lire Plus <span aria-hidden='true'>→</span>",
-
-"pub2-title": "Efficacité de la musique en contexte d'endoscopie", "pub2-date": "<i class='fas fa-calendar-alt' aria-hidden='true'></i> Fév 2020", "pub2-type": "<i class='fas fa-book-reader' aria-hidden='true'></i> Revue Littérature", "pub2-desc": "Revue de littérature co-écrite (Gastrointestinal Nursing) sur la musique comme intervention non pharmacologique en endoscopie.", "pub2-link": "Lire Plus <span aria-hidden='true'>→</span>",
-
-"pub3-title": "Contributeur Projet HEALING", "pub3-date": "<i class='fas fa-calendar-alt' aria-hidden='true'></i> 2020-2023", "pub3-type": "<i class='fas fa-project-diagram' aria-hidden='true'></i> Projet Intl.", "pub3-desc": "Coordinateur du suivi du projet 'Art-thérapie dans les Établissements d'Enseignement Supérieur' (Jordanie & Tunisie), développant des diplômes multidisciplinaires.", "pub3-link": "Lire Plus <span aria-hidden='true'>→</span>",
-
-"contact-title": "Contactez-Moi", "contact-getintouch": "Prendre Contact",
-
-"contact-intro": "Pour collaborations académiques, conférences, consultations (musicothérapie, gestion de crise, finance) ou partenariats humanitaires, veuillez me contacter.",
-
-"contact-location-label": "Lieu", "contact-email-label": "Email", "contact-phone-label": "Téléphone", "contact-follow": "Suivez-Moi",
-
-"contact-name-label": "Nom", "contact-email-label-form": "Email", "contact-subject-label": "Sujet", "contact-message-label": "Message", "contact-send-btn": "Envoyer Message",
-
-"form-status-sending": "Envoi du message...", "form-status-success": "Merci ! Votre message a été envoyé avec succès.", "form-status-error-generic": "Oups ! Un problème est survenu lors de l'envoi. Veuillez réessayer.", "form-status-error-network": "Oups ! Erreur réseau. Vérifiez votre connexion et réessayez.",
-
-"map-section-title": "Ma Localisation",
-
-"footer-tagline": "Académique | Chercheur | Musicothérapie | Gestion Crise | Leader Humanitaire",
-
-"footer-nav-home": "Accueil", "footer-nav-about": "À Propos", "footer-nav-experience": "Expérience", "footer-nav-skills": "Compétences", "footer-nav-publications": "Publications", "footer-nav-contact": "Contact",
-
-"footer-rights": "Tous Droits Réservés.",
-
-"alt-hero-profile-img": "Portrait photo du Dr. Wassim Jomaa", "alt-about-img": "Environnement de travail professionnel", "alt-pub1-img": "Concept recherche médicale", "alt-pub2-img": "Concept revue médicale ou littérature", "alt-pub3-img": "Concept collaboration ou projet international",
-
-}
-
-};
-
-
-
-// --- Image Paths (Keep placeholders or update if you have specific images) ---
-
-const imagePaths = {
-
-en: {
-
-hero: 'https://i1.rgstatic.net/ii/profile.image/11431281272521721-1724160105555_Q512/Wassim-Jomaa.jpg',
-
-about: 'https://images.unsplash.com/photo-1519389950473-47ba0277781c?ixlib=rb-1.2.1&auto=format&fit=crop&w=450&q=80', // Updated About image
-
-pub1: 'https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?ixlib=rb-1.2.1&auto=format&fit=crop&w=350&q=80', // Updated Pub1 image
-
-pub2: 'https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?ixlib=rb-1.2.1&auto=format&fit=crop&w=350&q=80', // Updated Pub2 image
-
-pub3: 'https://images.unsplash.com/photo-1556761175-5973dc0f32e7?ixlib=rb-1.2.1&auto=format&fit=crop&w=350&q=80', // Updated Pub3 image
-
-},
-
-fr: { // Assuming same images for FR
-
-hero: 'https://i1.rgstatic.net/ii/profile.image/11431281272521721-1724160105555_Q512/Wassim-Jomaa.jpg',
-
-about: 'https://images.unsplash.com/photo-1519389950473-47ba0277781c?ixlib=rb-1.2.1&auto=format&fit=crop&w=450&q=80',
-
-pub1: 'https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?ixlib=rb-1.2.1&auto=format&fit=crop&w=350&q=80',
-
-pub2: 'https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?ixlib=rb-1.2.1&auto=format&fit=crop&w=350&q=80',
-
-pub3: 'https://images.unsplash.com/photo-1556761175-5973dc0f32e7?ixlib=rb-1.2.1&auto=format&fit=crop&w=350&q=80',
-
-}
-
-};
-
-
-
-// --- Elements & Functions (Language/Menu/Form logic remains the same) ---
-
-const langButtons = document.querySelectorAll('.language-switcher button');
-
-const htmlEl = document.documentElement;
-
-const imgElements = {
-
-hero: document.getElementById('hero-profile-img'),
-
-about: document.getElementById('about-img'),
-
-pub1: document.querySelector('#publications .publication-card:nth-child(1) img'),
-
-pub2: document.querySelector('#publications .publication-card:nth-child(2) img'),
-
-pub3: document.querySelector('#publications .publication-card:nth-child(3) img'),
-
-};
-
-const metaDescriptionEl = document.getElementById('meta-description');
-
-
-
-function updateLanguage(lang) {
-
-if (!translations[lang] || !imagePaths[lang]) { console.error(`Language '${lang}' not fully configured.`); return; }
-
-const langTranslations = translations[lang];
-
-htmlEl.setAttribute('lang', lang);
-
-htmlEl.setAttribute('dir', lang === 'ar' ? 'rtl' : 'ltr'); // Keep default LTR
-
-
-
-// Update text content
-
-for (const key in langTranslations) {
-
-if (!key.startsWith('alt-')) { // Exclude alt text keys here
-
-const element = document.getElementById(key);
-
-if (element) {
-
-try {
-
-// Use innerHTML for elements that might contain tags (like titles, links, types)
-
-if (key.includes('title') || key.endsWith('-type') || key.endsWith('-link') || key.endsWith('-date')) {
-
-element.innerHTML = langTranslations[key];
-
-}
-
-// Set content attribute for meta description
-
-else if (key === 'meta-description') {
-
-element.setAttribute('content', langTranslations[key]);
-
-}
-
-// Set document title
-
-else if (key === 'page-title'){
-
-document.title = langTranslations[key];
-
-}
-
-// Use textContent for simple text paragraphs/labels
-
-else {
-
-element.textContent = langTranslations[key];
-
-}
-
-} catch (error) {
-
-console.warn(`Could not update element with ID: ${key}`, error);
-
-}
-
-} else {
-
-// Only warn if element not found for keys other than metadata/page title
-
-if(key !== 'meta-description' && key !== 'page-title') {
-
-// console.warn(`Element with ID '${key}' not found in HTML.`);
-
-}
-
-}
-
-}
-
-}
-
-
-
-// Update images and alt text
-
-for (const imgKey in imgElements) {
-
-const imgElement = imgElements[imgKey];
-
-const imgPath = imagePaths[lang]?.[imgKey]; // Use optional chaining
-
-const altTextKey = `alt-${imgKey}-img`; //.replace('-profile',''); // Keep simple key convention
-
-const altText = langTranslations[altTextKey];
-
-
-
-if (imgElement) {
-
-if (imgPath) {
-
-imgElement.src = imgPath;
-
-} else {
-
-console.warn(`Image path for '${imgKey}' in language '${lang}' not found.`);
-
-}
-
-if(altText){
-
-imgElement.alt = altText;
-
-} else {
-
-console.warn(`Alt text key '${altTextKey}' for language '${lang}' not found.`);
-
-imgElement.alt = ''; // Provide empty alt text if none found
-
-}
-
-} else {
-
-// console.warn(`Image element for key '${imgKey}' not found in HTML.`);
-
-}
-
-}
-
-
-
-// Update language switcher buttons
-
-langButtons.forEach(button => {
-
-const buttonLang = button.getAttribute('data-lang');
-
-button.classList.toggle('active', buttonLang === lang);
-
-button.setAttribute('aria-current', buttonLang === lang ? 'true' : 'false');
-
-});
-
-
-
-// Save preference
-
-try {
-
-localStorage.setItem('preferredLang', lang);
-
-} catch (e) {
-
-console.warn("Could not save language preference to localStorage:", e);
-
-}
-
-}
-
-
-
-// --- Initialize Language ---
-
-langButtons.forEach(button => {
-
-button.addEventListener('click', () => {
-
-const selectedLang = button.getAttribute('data-lang');
-
-updateLanguage(selectedLang);
-
-if (navLinks && navLinks.classList.contains('active')) { closeMobileMenu(); }
-
-});
-
-});
-
-
-
-let savedLang = 'en'; // Default to English
-
-try {
-
-const browserLang = navigator.language.split('-')[0];
-
-const storedLang = localStorage.getItem('preferredLang');
-
-savedLang = storedLang || (translations[browserLang] ? browserLang : 'en');
-
-} catch(e) {
-
-console.warn("Could not read language preference:", e);
-
-}
-
-// Fallback if saved language is invalid
-
-if (!translations[savedLang]) {
-
-savedLang = 'en';
-
-}
-
-updateLanguage(savedLang); // Initial language update
-
-
-
-
-
-// --- Mobile Menu Logic (Keep as before) ---
-
-const menuToggle = document.querySelector('.menu-toggle');
-
-const navLinks = document.querySelector('.nav-links');
-
-const body = document.body;
-
-
-
-function closeMobileMenu() {
-
-if (navLinks && menuToggle) {
-
-navLinks.classList.remove('active');
-
-menuToggle.setAttribute('aria-expanded', 'false');
-
-body.classList.remove('nav-open');
-
-menuToggle.querySelector('i').className = 'fas fa-bars';
-
-}
-
-}
-
-if (menuToggle && navLinks) {
-
-menuToggle.addEventListener('click', () => {
-
-const isOpen = navLinks.classList.toggle('active');
-
-menuToggle.setAttribute('aria-expanded', isOpen);
-
-body.classList.toggle('nav-open', isOpen);
-
-menuToggle.querySelector('i').className = isOpen ? 'fas fa-times' : 'fas fa-bars';
-
-});
-
-navLinks.querySelectorAll('a').forEach(link => { link.addEventListener('click', closeMobileMenu); });
-
-body.addEventListener('click', (e) => { if (navLinks.classList.contains('active') && !navLinks.contains(e.target) && !menuToggle.contains(e.target)) { closeMobileMenu(); } });
-
-document.addEventListener('keydown', (e) => { if (e.key === 'Escape' && navLinks.classList.contains('active')) { closeMobileMenu(); } });
-
-} else { console.warn("Mobile menu toggle or nav links not found."); }
-
-
-
-
-
-// --- Contact Form Submission to Make (Keep as before) ---
-
-const contactForm = document.getElementById('contact-form');
-
-const formStatus = document.getElementById('form-status');
-
-const currentLang = () => document.documentElement.lang || 'en'; // Get current lang from html tag
-
-
-
-const makeWebhookUrl = 'https://hook.eu2.make.com/u349ghb9an5p3y90nn2tp53ku99gxqi2';
-
-
-
-if (contactForm && formStatus) {
-
-contactForm.addEventListener('submit', function(e) {
-
-e.preventDefault();
-
-const lang = currentLang();
-
-const formData = new FormData(contactForm);
-
-const dataObject = Object.fromEntries(formData.entries());
-
-const jsonData = JSON.stringify(dataObject);
-
-
-
-formStatus.textContent = translations[lang]?.['form-status-sending'] || 'Sending...'; // Add fallback text
-
-formStatus.className = '';
-
-
-
-fetch(makeWebhookUrl, {
-
-method: 'POST',
-
-headers: {
-
-'Content-Type': 'application/json',
-
-'Accept': 'application/json'
-
-},
-
-body: jsonData
-
-})
-
-.then(response => {
-
-if (response.ok) {
-
-formStatus.textContent = translations[lang]?.['form-status-success'] || 'Message sent successfully!';
-
-formStatus.className = 'success';
-
-contactForm.reset();
-
-} else {
-
-console.error("Webhook submission error response:", response);
-
-formStatus.textContent = translations[lang]?.['form-status-error-generic'] || 'Submission failed. Please try again.';
-
-formStatus.className = 'error';
-
-}
-
-})
-
-.catch(error => {
-
-console.error("Network error during webhook submission:", error);
-
-formStatus.textContent = translations[lang]?.['form-status-error-network'] || 'Network error. Please check connection.';
-
-formStatus.className = 'error';
-
-})
-
-.finally(() => {
-
-setTimeout(() => {
-
-formStatus.textContent = '';
-
-formStatus.className = '';
-
-}, 8000);
-
-});
-
-});
-
-} else {
-
-console.warn("Contact form or status element not found.");
-
-}
-
-
-
-// --- Footer Year (Keep as before) ---
-
-const yearSpan = document.getElementById('current-year');
-
-if (yearSpan) { yearSpan.textContent = new Date().getFullYear(); }
-
-
-
-}); // End DOMContentLoaded
-
-</script>
-
+<script defer src="temp_script.js"></script>
 </body>
-
 </html>
